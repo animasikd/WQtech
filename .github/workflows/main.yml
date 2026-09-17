@@ -27,6 +27,8 @@ jobs:
           echo "Architecture: iphoneos-arm64" >> Packages
           echo "Filename: debs/com.animasikd.neonbadge_1.0.0_iphoneos-arm64.deb" >> Packages
           echo "Description: Плавно переливающиеся неоновые бейджи уведомлений!" >> Packages
+          echo "Author: animasikd" >> Packages
+          echo "Section: Tweaks" >> Packages
           
       - name: Commit & Push Changes
         run: |
@@ -35,5 +37,5 @@ jobs:
           git config --local user.name
  "GitHub Action"
           git add debs/* Packages || true
-          git commit -m "Автоматическая сборка твика" || true
+          git commit -m "Фикс отображения твика в Sileo" || true
           git push
