@@ -1,6 +1,6 @@
 name: Build Tweak
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -10,19 +10,18 @@ jobs:
 
       - name: Setup Theos
         run: |
-          bash -c "$(curl -fsSL https://githubusercontent.com
-)"
+          git clone --recursive https://github.com
+ ~/theos
           echo "THEOS=~/theos" >> $GITHUB_ENV
 
       - name: Build Deb
         run: |
           make package FINALPACKAGE=1
-          cp packages/*.deb debs/
+          cp packages/*.deb debs/ || true
           
       - name: Update Packages List
         run: |
-          echo "" > Packages
-          echo "Package: com.animasikd.neonbadge" >> Packages
+          echo "Package: com.animasikd.neonbadge" > Packages
           echo "Name: NeonBadge" >> Packages
           echo "Version: 1.0.0" >> Packages
           echo "Architecture: iphoneos-arm64" >> Packages
@@ -35,6 +34,6 @@ jobs:
  "action@github.com"
           git config --local user.name
  "GitHub Action"
-          git add debs/* Packages
-          git commit -m "Автоматическая сборка твика"
+          git add debs/* Packages || true
+          git commit -m "Автоматическая сборка твика" || true
           git push
