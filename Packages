@@ -1,0 +1,8 @@
+Package: com.cpdigitaldarkroom.barmoji
+Name: Barmoji (Rootless Test)
+Version: 2023.3
+Architecture: iphoneos-arm64
+Description: Смайлики под клавиатурой для проверки репозитория!
+Filename: debs/com.cpdigitaldarkroom.barmoji_2023.3_iphoneos-arm64.deb
+Size: 46796
+Section: Tweaks
