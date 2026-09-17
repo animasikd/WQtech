@@ -1,0 +1,40 @@
+name: Build Tweak
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Theos
+        run: |
+          bash -c "$(curl -fsSL https://githubusercontent.com
+)"
+          echo "THEOS=~/theos" >> $GITHUB_ENV
+
+      - name: Build Deb
+        run: |
+          make package FINALPACKAGE=1
+          cp packages/*.deb debs/
+          
+      - name: Update Packages List
+        run: |
+          echo "" > Packages
+          echo "Package: com.animasikd.neonbadge" >> Packages
+          echo "Name: NeonBadge" >> Packages
+          echo "Version: 1.0.0" >> Packages
+          echo "Architecture: iphoneos-arm64" >> Packages
+          echo "Filename: debs/com.animasikd.neonbadge_1.0.0_iphoneos-arm64.deb" >> Packages
+          echo "Description: Плавно переливающиеся неоновые бейджи уведомлений!" >> Packages
+          
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email
+ "action@github.com"
+          git config --local user.name
+ "GitHub Action"
+          git add debs/* Packages
+          git commit -m "Автоматическая сборка твика"
+          git push

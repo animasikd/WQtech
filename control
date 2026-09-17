@@ -1,0 +1,9 @@
+Package: com.animasikd.neonbadge
+Name: NeonBadge
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Плавно переливающиеся неоновые бейджи уведомлений!
+Maintainer: animasikd
+Author: animasikd
+Section: Tweaks
