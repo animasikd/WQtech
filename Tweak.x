@@ -1,23 +1,14 @@
 #import <UIKit/UIKit.h>
 
-// Подключаемся к системным кружочкам уведомлений в iOS
-%hook SBIconBadgeView
+// Объявляем оригинальную функцию проверки MobileGestalt
+FOUNDATION_EXTERN BOOL MGGetBoolAnswer(NSString *key);
 
-- (void)layoutSubviews {
-    %orig; // Оставляем стандартную работу системы
-
-    // Находим фоновую картинку кружочка
-    UIView *backgroundView = [self valueForKey:@"_backgroundView"];
-    if (backgroundView) {
-        // Включаем бесконечный плавный перелив из голубого в фиолетовый неон!
-        [UIView animateWithDuration:3.0 delay:0.0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-            backgroundView.backgroundColor = [UIColor systemCyanColor];
-        } completion:nil];
-        
-        [UIView animateWithDuration:3.0 delay:1.5 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-            backgroundView.backgroundColor = [UIColor systemPurpleColor];
-        } completion:nil];
+// Создаем хук (перехватчик) на эту функцию
+%hookf(BOOL, MGGetBoolAnswer, NSString *key) {
+    // Если система спрашивает про ключ оригинального Always-On Display
+    if ([key isEqualToString:@"Id9b9RRYgS"]) {
+        return YES; // Отвечаем: "Да, этот Айфон поддерживает AOD!"
     }
+    // Для всех остальных ключей возвращаем стандартные значения системы
+    return %orig(key);
 }
-
-%end

@@ -1,9 +1,9 @@
-Package: com.animasikd.neonbadge
-Name: NeonBadge
+Package: com.animasikd.alwaysonnative
+Name: AlwaysOnNative
 Depends: mobilesubstrate
 Version: 1.0.0
 Architecture: iphoneos-arm64
-Description: Плавно переливающиеся неоновые бейджи уведомлений!
+Description: Включение оригинального Always-On Display в настройках экрана!
 Maintainer: animasikd
 Author: animasikd
 Section: Tweaks

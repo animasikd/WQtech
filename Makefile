@@ -4,9 +4,9 @@ THEOS_PACKAGE_SCHEME := rootless
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME := NeonBadge
+TWEAK_NAME := AlwaysOnNative
 
-NeonBadge_FILES := Tweak.x
-NeonBadge_CFLAGS := -fobjc-arc
+AlwaysOnNative_FILES := Tweak.x
+AlwaysOnNative_CFLAGS := -fobjc-arc
 
 include $(THEOS)/makefiles/tweak.mk
