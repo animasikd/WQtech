@@ -1,8 +1,8 @@
-Package: com.cpdigitaldarkroom.barmoji
-Name: Barmoji (Rootless Test)
-Version: 2023.3
+Package: com.animasikd.alwaysonnative
+Name: AlwaysOnNative
+Version: 1.0.0
 Architecture: iphoneos-arm64
-Description: Смайлики под клавиатурой для проверки репозитория!
-Filename: debs/com.cpdigitaldarkroom.barmoji_2023.3_iphoneos-arm64.deb
-Size: 46796
+Description: Включение оригинального Always-On Display в настройках экрана!
+Filename: debs/com.animasikd.alwaysonnative_1.0.0_iphoneos-arm64.deb
+Size: 5000
 Section: Tweaks
